@@ -29,14 +29,45 @@ namespace excepciones
 
                 lblResultado.Text = "= " + r;
             }
-            catch (FormatException ex) // como se q va a ser un format excepcion ya pude armar una excepcion pensando en eso
+            //catch (FormatException ex) // como se q va a ser un format excepcion ya pude armar una excepcion pensando en eso
+            //{
+            //    MessageBox.Show("Por favor cargar solo numero");
+            //}
+            //catch (DivideByZeroException ex)
+            //{
+            //    MessageBox.Show("No se puede dividir por 0");
+            //}
+            catch (Exception ex)
             {
-                MessageBox.Show("Por favor cargar solo numero");
+                MessageBox.Show("Error no reconocido..");
             }
-            catch (DivideByZeroException ex)
+            finally // se ejecutan las instrucciones que contengan... por ejemplo si tengo una apertura de BD y tengo una excepcion posteriormente, necesito cerrarla, por eso es buena llevarla aca.
             {
-                MessageBox.Show("No se puede dividir por 0");
+                //instrucciones que necesito que se ejecuten si o si.
+                //operacion sensible.
+
             }
         }
+
+        private int calcular()
+        {
+            int a, b, r;
+            try
+            {
+                a = int.Parse(txtNumero1.Text);
+                b = int.Parse(txtNumero2.Text);
+
+                r = a / b;
+
+                return r;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+
     }
 }
